@@ -18,6 +18,7 @@ limitations under the License.
 package versioned
 
 import (
+	glog "github.com/golang/glog"
 	networkingv1alpha3 "github.com/wallstreetcn/istio-k8s/client/clientset/versioned/typed/networking.istio.io/v1alpha3"
 	discovery "k8s.io/client-go/discovery"
 	rest "k8s.io/client-go/rest"
@@ -72,6 +73,7 @@ func NewForConfig(c *rest.Config) (*Clientset, error) {
 
 	cs.DiscoveryClient, err = discovery.NewDiscoveryClientForConfig(&configShallowCopy)
 	if err != nil {
+		glog.Errorf("failed to create the DiscoveryClient: %v", err)
 		return nil, err
 	}
 	return &cs, nil
