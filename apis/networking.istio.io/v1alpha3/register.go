@@ -38,6 +38,8 @@ func addKnownTypes(scheme *runtime.Scheme) error {
 		&DestinationRuleList{},
 		&Gateway{},
 		&GatewayList{},
+		&ServiceEntry{},
+		&ServiceEntryList{},
 	)
 	metav1.AddToGroupVersion(scheme, SchemeGroupVersion)
 	return nil
